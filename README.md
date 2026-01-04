@@ -1,5 +1,13 @@
 # 🍽️ Django Restaurant Ordering System
 
+👨‍💻 Author
+
+Satya Sundar Malik
+
+🔗 **Live Website:**  
+https://thesundar.pythonanywhere.com/
+
+
 A full-stack **Django-based food ordering web application** with cart, offers, checkout, order confirmation, email notifications, and deployment-ready setup.
 
 ---
