@@ -1,0 +1,35 @@
+
+
+{% comment %} {% extends "base.html" %} {% endcomment %}
+
+{% load static %}
+<!-- Custom styles for this template -->
+  <link href="{% static 'css/auth-ui.css' %}" rel="stylesheet" />
+
+{% block main %}
+<section class="auth-screen">
+  <div class="auth-box">
+
+    <h2>Welcome</h2>
+    <p class="subtitle">Login to your account</p>
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.username }}
+      {{ form.password }}
+
+      <button class="auth-btn primary mt-2">Login</button>
+    </form>
+
+    <a href="{% url 'password_reset' %}" class="auth-link">
+      Forgot Password?
+    </a>
+
+    <div class="auth-footer">
+      Don’t have an account?
+      <a href="{% url 'signup' %}" class="auth-link">Sign Up</a>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

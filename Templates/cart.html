@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% comment %} {% extends "base.html" %}
+{% block class %}class="sub_page"{% endblock class %}
+{% block menu_status %}active{% endblock menu_status %}
+
+
+
+{% block main %}
+<div class="container mt-5">
+  <h2>Your Cart</h2>
+
+  {% if cart_items %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cart in cart_items %}
+      <tr>
+        <td>
+          <img src="{{ cart.item.image.url }}" width="60">
+          {{ cart.item.item_name }}
+        </td>
+        <td>${{ cart.item.price }}</td>
+        <td>{{ cart.quantity }}</td>
+        <td>${{ cart.item.price|floatformat:2|add:""|safe }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4 class="text-right">Grand Total: ${{ total_price }}</h4>
+
+  <a href="#" class="btn btn-success">Checkout</a>
+
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+</div>
+
+{% endblock main %} {% endcomment %}
+
+
+
+
+{% block class %}class="sub_page"{% endblock class %}
+{% block menu_status %}active{% endblock menu_status %}
+
+{% block main %}
+<div class="container mt-5 mb-5">
+  <h2 class="mb-4">Your Cart</h2>
+
+  {% if cart_items %}
+  <table class="table table-bordered align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Discount</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for cart in cart_items %}
+      <tr>
+        <td>
+          <img src="{{ cart.item.image.url }}" width="60" class="me-2">
+          {{ cart.item.item_name }}
+        </td>
+
+        <td>
+          {% if cart.discount_percent %}
+            <small class="text-muted">MRP</small><br>
+            <del>₹{{ cart.item.price }}</del><br>
+            <strong>₹{{ cart.discounted_price }}</strong>
+          {% else %}
+            ₹{{ cart.item.price }}
+          {% endif %}
+        </td>
+
+        <td>{{ cart.quantity }}</td>
+
+        <td>
+          {% if cart.discount_percent %}
+            {{ cart.discount_percent }}%
+          {% else %}
+            —
+          {% endif %}
+        </td>
+
+        <td>
+          ₹{{ cart.total_price }}
+        </td>
+
+        <td>
+    <form method="POST" action="{% url 'remove_from_cart' %}">
+      {% csrf_token %}
+      <input type="hidden" name="item_id" value="{{ cart.item.id }}">
+      <button type="submit" class="btn btn-danger btn-sm">
+        Remove
+      </button>
+    </form>
+  </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="text-end">
+    <h4>
+      Grand Total: <strong>₹{{ total_price }}</strong>
+    </h4>
+    <a href="{% url 'checkout' %}" class="btn btn-success mt-3">Proceed to Checkout</a>
+    <a href="{% url 'menu' %}"><button class="btn btn-secondary ml-5 mt-4 d-flex-wrap justify-content " data-dismiss="modal">
+    Continue Shopping  
+  </button> </a>
+  </div>
+
+  {% else %}
+    <div class="alert alert-info">
+      Your cart is empty.
+    </div>
+  {% endif %}
+</div>
+{% endblock main %}

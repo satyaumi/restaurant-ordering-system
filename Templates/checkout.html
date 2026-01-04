@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block class %}class="sub_page"{% endblock class %}
+{% block table_status %}active{% endblock table_status %}
+{% block main %}
+<h2>Order Summary</h2>
+
+<ul>
+  {% for cart in cart_items %}
+    <li>
+      {{ cart.item.item_name }} × {{ cart.quantity }} = ₹{{ cart.total_price }}
+    </li>
+  {% endfor %}
+</ul>
+
+<h3>Total: ₹{{ total }}</h3>
+
+<form method="POST" action="{% url 'place_order' %}">
+  {% csrf_token %}
+ <a href=""><button class="btn btn-primary">Place Order</button></a>
+</form> 
+
+{% endblock main %}

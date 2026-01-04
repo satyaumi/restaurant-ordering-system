@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block class %}class="sub_page"{% endblock class %}
+{% block menu_status %}active{% endblock menu_status %}
+{% load static %}
+
+{% block main %}
+
+  <!-- food section -->
+
+  <section class="food_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Menu
+        </h2>
+      </div>
+
+      <ul class="filters_menu">
+        <li class="active" data-filter="*">All</li>
+        {% for i in list %}
+        <li data-filter=".{{i.category_name}}">{{i.category_name}}</li>
+        {% endfor %}
+      </ul>
+
+      <div class="filters-content">
+        <div class="row grid">
+          {% for item in items %}
+          <div class="col-sm-6 col-lg-4 all {{item.category}}">
+            <div class="box">
+              <div>
+                <div class="img-box">
+                  <img src="/media/{{item.image}} " alt="{{item.image}}">
+                </div>
+                <div class="detail-box">
+                  <h5>
+                    {{item.item_name}}
+                  </h5>
+                  <p>
+                    {{item.description}}
+                  </p>
+                  <div class="options">
+                    <h6>
+                      ${{item.price}}
+                    </h6>
+                    <button class="btn btn-success add-to-cart" data-item-id="{{item.id}}" data-item-name="{{item.item_name}}" data-item-price="{{item.price}}">
+                      Add to Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="">
+          View More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- end food section -->
+
+  
+
+{% endblock main %}

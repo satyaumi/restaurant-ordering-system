@@ -1,0 +1,168 @@
+/* AUTH BACKGROUND */
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #5f60b5, #3f437e);
+  padding: 20px;
+}
+
+/* CARD */
+.auth-box {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 35px 28px;
+  color: #fff;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+}
+
+/* HEADINGS */
+.auth-box h2 {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.auth-box p.subtitle {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 25px;
+}
+
+/* INPUTS */
+.auth-box input {
+  width: 100%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  color: #fff;
+}
+
+.auth-box input::placeholder {
+  color: #e0e0e0;
+}
+
+.auth-box input:focus {
+  outline: none;
+  background: rgba(255,255,255,0.28);
+}
+
+/* BUTTONS */
+.auth-btn {
+  width: 100%;
+  border-radius: 25px;
+  padding: 12px;
+  font-weight: 500;
+  border: none;
+}
+
+.auth-btn.primary {
+  background: #3ec6ff;
+  color: #fff;
+}
+
+.auth-btn.outline {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+/* LINKS */
+.auth-link {
+  color: #cfe9ff;
+  font-size: 13px;
+  text-align: center;
+  display: block;
+  margin-top: 12px;
+}
+
+/* FOOT TEXT */
+.auth-footer {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 18px;
+}
+
+
+/* -----------------------------
+   PASSWORD RESET – EXTENSIONS
+------------------------------ */
+
+/* Form spacing consistency */
+.auth-box form {
+  margin-top: 10px;
+}
+
+/* Style Django form inputs */
+.auth-box input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  margin-bottom: 14px;
+  color: #333;
+}
+
+.auth-box input::placeholder {
+  color: #777;
+}
+
+/* Focus state */
+.auth-box input:focus {
+  outline: none;
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 0.15rem rgba(108, 99, 255, 0.25);
+}
+
+/* Button improvements */
+.auth-btn.primary {
+  background: #6c63ff;
+  color: #fff;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.auth-btn.primary:hover {
+  background: #554eea;
+  transform: translateY(-1px);
+}
+
+/* Secondary / outline button */
+.auth-btn.outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.6);
+  color: #fff;
+}
+
+/* Error messages */
+.auth-box ul.errorlist {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+  color: #ffdddd;
+  font-size: 13px;
+}
+
+/* Success / info text */
+.auth-box .subtitle {
+  color: #eaeaea;
+}
+
+/* Links */
+.auth-link {
+  color: #d6e4ff;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
